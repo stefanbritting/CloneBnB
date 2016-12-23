@@ -1,7 +1,8 @@
 <div id="clearance" class="sign-up">
   <h2><%= t(".title") %></h2>
-
-  <%= form_for @user do |form| %>
+  <!-- remote: true will send the request
+  as a js request; not as a post html request anymore -->
+  <%= form_for @user, url: "/users", remote: true do |form| %>
     <%= render partial: '/users/form', object: form %>
 
     <div class="submit-field">
