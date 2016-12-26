@@ -4,10 +4,12 @@ one:
   uid: MyString
   token: MyString
   provider: MyString
-  uesr_id_id: 
+  user_id:
 
 two:
   uid: MyString
   token: MyString
   provider: MyString
-  uesr_id_id: 
+  user_id:
+
+   # before it was uesr_id_id:
