@@ -5,11 +5,15 @@ class User < ActiveRecord::Base
 
   def self.create_with_auth_and_hash(authentication, auth_hash)
      # include more user info. auth_hash needs to contain public_profile
-    user = User.create(email: auth_hash["extra"]["raw_info"]["email"] )
+    user = User.new(email: auth_hash["extra"]["raw_info"]["email"] )
     # more info
     user.remember_token = SecureRandom.hex(3)
     user.authentications << (authentication)
-    byebug
+    # Problem: user.password (method from clearance) will raise error
+    # although column 'encrypted_password' can be null
+    # USING FACEBOOK log in. no need to save a password!
+    user.password = "notgoodsolution"
+    user.save
   end
 
   def fb_token
