@@ -1,0 +1,7 @@
+<h1> Please fill out the form to list a new Property on CloneBnb</h1>
+<%= form_for :listing, url: listings_path do |form| %>
+  <%= render partial: '/listings/form', object: form %>
+  <div>
+      <%= form.submit %>
+  </div>
+<% end %>
