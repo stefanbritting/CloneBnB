@@ -2,7 +2,6 @@ class Authentication < ActiveRecord::Base
   belongs_to :user
     def self.create_with_omniauth(auth_hash)
          # check auth_hash with byebug
-      byebug
       auth = Authentication.new(provider: auth_hash["provider"], uid: auth_hash["uid"],
       token: auth_hash["credentials"]["token"])
     end

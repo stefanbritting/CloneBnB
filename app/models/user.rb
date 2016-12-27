@@ -1,14 +1,15 @@
 class User < ActiveRecord::Base
+  require 'securerandom'
   include Clearance::User
   has_many :authentications, :dependent => :destroy
 
   def self.create_with_auth_and_hash(authentication, auth_hash)
-     # last_name: auth_hash["last_name"]
-     # email: auth_hash["extra"]["raw_info"]["email"]
-     # check the input auth_hash
-     byebug
-    user = Authentication.create(email: auth_hash["email"] )
+     # include more user info. auth_hash needs to contain public_profile
+    user = User.create(email: auth_hash["extra"]["raw_info"]["email"] )
+    # more info
+    user.remember_token = SecureRandom.hex(3)
     user.authentications << (authentication)
+    byebug
   end
 
   def fb_token
