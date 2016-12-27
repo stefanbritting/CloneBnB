@@ -7,6 +7,7 @@ class CreateAuthentications < ActiveRecord::Migration
       t.string :provider
       t.references :user, index: true, foreign_key: true # user_id of the User in this apps database
         # 'references' has the same effect as adding belongs_to in the User Model
+        # and creates the foreign_key in the db table
       t.timestamps null: false
     end
   end

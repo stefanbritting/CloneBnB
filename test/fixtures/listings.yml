@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  country: MyString
+  city: MyString
+  cip_code: MyString
+  street_address: MyText
+  price_per_night:
+  fees:
+
+two:
+  title: MyString
+  description: MyText
+  country: MyString
+  city: MyString
+  zip_code: MyString
+  street_address: MyText
+  price_per_night:
+  fees:
