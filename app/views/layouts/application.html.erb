@@ -8,7 +8,6 @@
 </head>
 <body>
   <div id="header">
-    <%= signed_in? -%>
     <% if signed_in? -%>
       <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
     <% else -%>
