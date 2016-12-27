@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     # User routes
   get "/users/:id" => "users#show"
 
+    # Facebook Omniauth routes
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
