@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
-  get "/" => "application#main"
 
     # User routes
   get "/users/:id" => "users#show"
@@ -27,7 +26,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   # root 'welcome#index'
+    root 'application#main'
    # root :to => "users#new",
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

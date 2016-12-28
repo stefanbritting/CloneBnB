@@ -1,6 +1,5 @@
 <h1>Hello CloneBnB </h1>
 <%= link_to "Create Listing", controller: 'listings', action: 'new' %> <br></br>
-<% listings = get_listings %>
-<% listings.each do |property| %>
+<% @listing.each do |property| %>
   <a href="listings/<%= property.id%>"> <%= property.title%> </a><br></br>
 <% end %>
