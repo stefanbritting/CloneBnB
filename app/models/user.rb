@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
     user.password = "notgoodsolution"
     user.save
   end
+  
+  # override provide_password method here
 
   def fb_token
     x = self.authentications.where(:provider => :facebook).first

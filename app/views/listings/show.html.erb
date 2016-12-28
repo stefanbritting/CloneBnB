@@ -1,0 +1,8 @@
+<% @listing = Listing.find(params[:id]) %>
+<h1> Listing: <%= @listing.title %> </h1>
+  <%= render partial: "/listings/show_listing" %>
+<% if @listing.user_id == current_user.id %>
+  <%= link_to 'Edit Listing', controller: 'listings', action: "edit" %>
+<% end %>
+<p>This property is provided by: </p>
+<%= link_to "#{get_user_name}", controller: 'listings', action: "edit" %>
