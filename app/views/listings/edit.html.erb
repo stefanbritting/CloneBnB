@@ -1,0 +1,8 @@
+<% @listing_id = params[:id] %>
+<% @listing = Listing.find(@listing_id) %>
+<h1> Please edit your Listing: <%= @listing.title %> </h1>
+
+<%= form_for :listing, url: listing_path, method: :patch do |form| %>
+  <%= render partial: "listings/form", object: form %>
+  <%= form.submit "Save Changes" %>
+<% end %>
