@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
   include Clearance::User
   has_many :authentications, :dependent => :destroy
   has_many :listings, :dependent => :destroy
+    # the role coloumn is integer but their value will be concerted
+    # the the role: [:symbols] according to their position (0,1,2)
+    # the ActiveREcord::Enum model further adds nice methods
+  enum role: [:customer, :moderator, :superadmin]
 
   def self.create_with_auth_and_hash(authentication, auth_hash)
      # include more user info. auth_hash needs to contain public_profile
@@ -16,7 +20,7 @@ class User < ActiveRecord::Base
     user.password = "notgoodsolution"
     user.save
   end
-  
+
   # override provide_password method here
 
   def fb_token
