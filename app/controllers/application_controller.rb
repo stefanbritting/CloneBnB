@@ -10,9 +10,21 @@ class ApplicationController < ActionController::Base
   def allowed?(action, user)
       # array declaring allowed actions for each user role
     customer_actions    = [:new, :create, :edit, :update, :show, :delete]
-    moderator_actions   = customer_actions << :verify
+    moderator_actions   = customer_actions.dup
+    moderator_actions  << :verify
     superadmin_actions  = moderator_actions
-    byebug
+    access = false
+    case user.role
+    when "customer"
+      access = customer_actions.include?(action)
+    when "moderator"
+      access = moderator_actions.include?(action)
+    when "superadmin"
+      access = superadmin_actions.include?(action)
+    else
+      raise "Error: User role not defined!"
+    end
+    return access
   end
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
