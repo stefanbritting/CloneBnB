@@ -42,6 +42,15 @@ class ListingsController < ApplicationController
       render "/listings/#{@listing.id}/edit"
     end
   end
+
+  def verify
+    @listing.verification = true
+    if @listing.save
+      redirect_to "/listings/#{@listing.id}"
+    else
+      render "/listings/#{@listing.id}/" notice: "Verification not successful!"
+    end
+  end
 ################################################
     private
 
