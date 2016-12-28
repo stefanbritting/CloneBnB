@@ -39,6 +39,8 @@ gem 'figaro'
 # Omniauth and Omniauth-facebook for Facebook-Login
 gem 'omniauth'
 gem 'omniauth-facebook'
+# pagination
+gem 'kaminari'
 
 
 group :development, :test do
