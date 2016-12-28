@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include Clearance::Controller
   def main
-    @listing = Listing.all
+    @listing = Listing.order(:city).page(params[:page])
     render '/main'
   end
   # Prevent CSRF attacks by raising an exception.
