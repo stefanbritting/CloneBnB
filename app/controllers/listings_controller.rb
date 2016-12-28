@@ -7,6 +7,7 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
+    @listing.verification = false
     if @listing.save
       redirect_to "/listings/#{@listing.id}"
     else
