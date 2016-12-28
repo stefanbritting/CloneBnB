@@ -7,6 +7,7 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
+    @listing.verification = false
     if @listing.save
       redirect_to "/listings/#{@listing.id}"
     else
@@ -40,6 +41,22 @@ class ListingsController < ApplicationController
     else
       render "/listings/#{@listing.id}/edit"
     end
+  end
+
+  def verify
+    flash_message = "Verification was not successful! No Permission!"
+    if allowed?(:verify, current_user)
+      # default of verification is false
+      # default of checkbox is unchecked
+      # so it will always change to the oposite (if checked => true)
+      @listing = Listing.find(params[:id])
+      @listing.verification = not(@listing.verification)
+      if @listing.save
+        flash_message = "Verification was successful!"
+      end
+    end
+    flash[:notice] = flash_message
+    redirect_to "/listings/#{params[:id]}"
   end
 ################################################
     private

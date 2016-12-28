@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     # User routes
   get "/users/:id" => "users#show"
 
+    # Further Listing routes
+  post "listings/:id/verify" => "listings#verify"
     # Facebook Omniauth routes
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
