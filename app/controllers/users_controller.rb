@@ -12,6 +12,10 @@ class UsersController < Clearance::UsersController
     # controller for post "/users" request
   def create
     @user = User.new(user_from_params)
+    @user.role = 0
+      # roles:
+      # 0 = customer; 1 = moderator; 2 = superadmin
+      
       # actions can respond differently
       # to various request formats being sent
     respond_to do |format|
