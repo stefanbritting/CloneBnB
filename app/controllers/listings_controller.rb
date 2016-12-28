@@ -44,11 +44,15 @@ class ListingsController < ApplicationController
   end
 
   def verify
-    @listing.verification = true
+    # default of verification is false
+    # default of checkbox is unchecked
+    # so it will always change to the oposite (if checked => true)
+    @listing = Listing.find(params[:id])
+    @listing.verification = not(@listing.verification)
     if @listing.save
       redirect_to "/listings/#{@listing.id}"
     else
-      render "/listings/#{@listing.id}/" notice: "Verification not successful!"
+      render "/listings/#{@listing.id}/", notice: "Verification not successful!"
     end
   end
 ################################################

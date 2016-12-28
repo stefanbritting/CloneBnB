@@ -1,6 +1,12 @@
 <% @listing = Listing.find(params[:id]) %>
 <h1> Listing: <%= @listing.title %> </h1>
   <%= render partial: "/listings/show_listing" %>
+<% if current_user.role == "moderator" || current_user.role == "superadmin" %>
+  <%= form_for :listing, url:"/listings/#{@listing.id}/verify" do |form| %>
+      <%= check_box_tag(:listing, value = 1, checked = @listing.verification)  %>
+      <%= form.submit "Change verification status!" %>
+  <% end %>
+<% end %>
 <% if @listing.user_id == current_user.id %>
   <%= link_to 'Edit Listing', controller: 'listings', action: "edit" %>
 <% end %>
