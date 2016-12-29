@@ -41,7 +41,13 @@ class UsersController < Clearance::UsersController
     render '/users/edit'
   end
   def update
-    byebug
+    strong_params = user_from_params
+    @user = User.find(params[:id])
+    strong_params.each do |attribute| # ["first_name", "Hans"]
+      change_attribute!(attribute, strong_params, @user)
+    end
+    @user.save
+    render '/users/show'
   end
 private
   # Overriding method from Clearance gem in order to
@@ -51,5 +57,9 @@ private
     params.require(:user).permit(:first_name, :last_name, :gender, :email, :password)
   end
 
+  def change_attribute!(attr, strong_params, user)
+    attribute = attr[0].to_sym
+    user[attribute] = strong_params[attribute]  unless strong_params[attribute] == ""
+  end
   #  end of controller
 end
