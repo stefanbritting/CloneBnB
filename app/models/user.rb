@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
     # the the role: [:symbols] according to their position (0,1,2)
     # the ActiveREcord::Enum model further adds nice methods
   enum role: [:customer, :moderator, :superadmin]
-
+  mount_uploader :avatar, AvatarUploader
+###########################################
+  # methods
   def self.create_with_auth_and_hash(authentication, auth_hash)
      # include more user info. auth_hash needs to contain public_profile
     user = User.new(email: auth_hash["extra"]["raw_info"]["email"] )
