@@ -11,4 +11,4 @@
   <%= link_to 'Edit Listing', controller: 'listings', action: "edit" %>
 <% end %>
 <p>This property is provided by: </p>
-<%= link_to "#{get_user_name}", controller: 'users', action: "show" %>
+<a  href="/users/<%=get_listing_owner.id%>"><%= get_owner_name %></a>
