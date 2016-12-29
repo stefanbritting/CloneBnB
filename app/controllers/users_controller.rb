@@ -44,9 +44,17 @@ class UsersController < Clearance::UsersController
     strong_params = user_from_params
     @user = User.find(params[:id])
     strong_params.each do |attribute| # ["first_name", "Hans"]
-      change_attribute!(attribute, strong_params, @user)
+      # picture upload will be handled afterwards
+      next if attribute[0] == "avatar"
+      change_attributes!(attribute, strong_params, @user)
     end
-    @user.save
+    byebug
+    uploader = AvatarUploader.new
+    uploader.store!(strong_params[:avatar])
+    byebug
+    if @user.save
+      flash[:notice] = "Changes successfully saved!"
+    end
     render '/users/show'
   end
 private
@@ -54,11 +62,13 @@ private
   # create user with more attrbutes
   # than just email and password
   def user_from_params
-    params.require(:user).permit(:first_name, :last_name, :gender, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :gender,
+     :email, :password, :avatar)
   end
 
-  def change_attribute!(attr, strong_params, user)
+  def change_attributes!(attr, strong_params, user)
     attribute = attr[0].to_sym
+    byebug
     user[attribute] = strong_params[attribute]  unless strong_params[attribute] == ""
   end
   #  end of controller
