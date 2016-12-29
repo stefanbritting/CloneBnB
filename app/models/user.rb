@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   require 'securerandom'
+  require 'carrierwave/orm/activerecord'
   include Clearance::User
+
   has_many :authentications, :dependent => :destroy
   has_many :listings, :dependent => :destroy
     # the role coloumn is integer but their value will be concerted
@@ -8,7 +10,7 @@ class User < ActiveRecord::Base
     # the ActiveREcord::Enum model further adds nice methods
   enum role: [:customer, :moderator, :superadmin]
     # for image uploads :avatar(=column name)
-  mount_uploader :avatar, AvatarUploader
+  mount_uploader :avatar, ::AvatarUploader
 ###########################################
   # methods
   def self.create_with_auth_and_hash(authentication, auth_hash)

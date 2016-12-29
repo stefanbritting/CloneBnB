@@ -1,9 +1,9 @@
 <h1> Hey <%= current_user.first_name%> </h1>
 <h2> Please edit your Profile here: </h2>
 <%= form_for :user, url: user_path, method: :patch do |form| %>
-  <%= render partial: '/users/edit_form', object: form %>
+  <%= render partial: '/users/edit_form', locals: {form: form} %>
   <div class="submit-field">
-    .<div>
+    <div>
       <%= form.file_field :avatar %>
     </div>
     <%= form.submit "Save changes!" %>
