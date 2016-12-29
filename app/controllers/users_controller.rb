@@ -15,7 +15,7 @@ class UsersController < Clearance::UsersController
     @user.role = 0
       # roles:
       # 0 = customer; 1 = moderator; 2 = superadmin
-      
+
       # actions can respond differently
       # to various request formats being sent
     respond_to do |format|
@@ -35,7 +35,14 @@ class UsersController < Clearance::UsersController
       end
     end
     # end of create
-end
+  end
+
+  def edit
+    render '/users/edit'
+  end
+  def update
+    byebug
+  end
 private
   # Overriding method from Clearance gem in order to
   # create user with more attrbutes

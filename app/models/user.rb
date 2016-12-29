@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
     # the the role: [:symbols] according to their position (0,1,2)
     # the ActiveREcord::Enum model further adds nice methods
   enum role: [:customer, :moderator, :superadmin]
+    # for image uploads :avatar(=column name)
   mount_uploader :avatar, AvatarUploader
 ###########################################
   # methods

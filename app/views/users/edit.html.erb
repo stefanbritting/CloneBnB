@@ -1,0 +1,8 @@
+<h1> Hey <%= current_user.first_name%> </h1>
+<h2> Please edit your Profile here: </h2>
+<%= form_for :user, url: user_path, method: :patch do |form| %>
+  <%= render partial: '/users/form', object: form %>
+  <div class="submit-field">
+    <%= form.submit "Save changes!" %>
+  </div>
+<% end %>

@@ -16,5 +16,6 @@ module UsersHelper
   def get_listing_owner
     @user = User.find(Listing.find(params[:id]).user_id)
   end
+
   # end of module
 end
