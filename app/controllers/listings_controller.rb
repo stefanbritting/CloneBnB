@@ -29,7 +29,7 @@ class ListingsController < ApplicationController
      @listing.update(listing_params)
       # this wont work with multiple true!
       # saving the image
-    image = @listing.upload_listings.create(image: params[:listing][:image]) if  params[:listing][:image] # not nil
+    @listing.upload_listings.create(image: params[:listing][:image]) if  params[:listing][:image] # not nil
     if @listing.save
       redirect_to "/listings/#{@listing.id}"
     else
