@@ -41,16 +41,13 @@ class UsersController < Clearance::UsersController
     render '/users/edit'
   end
   def update
-    strong_params = user_from_params
     @user = User.find(params[:id])
-    strong_params.each do |attribute| # ["first_name", "Hans"]
-      # picture upload will be handled afterwards
-       next if attribute[0] == "avatar"
-      change_attributes!(attribute, strong_params, @user)
-    end
-     @user.avatar = params[:user][:avatar]
+    @user.update(user_params)
+    @user.avatar = params[:user][:avatar]
     if @user.save
       flash[:notice] = "Changes successfully saved!"
+    else
+      flash[:notice] = "Changes could not be saved!"
     end
     render '/users/show'
   end
@@ -58,7 +55,7 @@ private
   # Overriding method from Clearance gem in order to
   # create user with more attrbutes
   # than just email and password
-  def user_from_params
+  def user_params
     params.require(:user).permit(:first_name, :last_name, :gender,
      :email, :password, :avatar)
   end

@@ -1,6 +1,9 @@
 <% @listing = Listing.find(params[:id]) %>
 <h1> Listing: <%= @listing.title %> </h1>
-  <%= render partial: "/listings/show_listing" %>
+<% get_upload_listing_urls(@listing).each do |url| %>
+  <%= image_tag  url, :class => "avatar_img" %>
+<% end %>
+<%= render partial: "/listings/show_listing" %>
 <% if current_user.role == "moderator" || current_user.role == "superadmin" %>
   <%= form_for :listing, url:"/listings/#{@listing.id}/verify" do |form| %>
       <%= check_box_tag(:listing, value = 1, checked = @listing.verification)  %>

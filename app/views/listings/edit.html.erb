@@ -4,5 +4,7 @@
 
 <%= form_for :listing, url: listing_path, method: :patch do |form| %>
   <%= render partial: "listings/form", object: form %>
+  <%= form.file_field :image %>
+  <p> </p>
   <%= form.submit "Save Changes" %>
 <% end %>

@@ -8,6 +8,7 @@
 </head>
 <body>
   <div id="header">
+    <%= link_to "Home", "/"%> 
     <% if signed_in? -%>
       <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
       <%= link_to "My Profile", "/users/#{current_user.id}" %>

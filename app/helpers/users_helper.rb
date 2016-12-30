@@ -3,8 +3,10 @@ module UsersHelper
   def get_owner_name
         # params are automatically passed to the function
     owner =  User.find(Listing.find(params["id"]).user_id)
-    if owner.first_name
+    if owner.first_name && owner.last_name
       name = owner.first_name + " " + owner.last_name
+    elsif owner.first_name
+      name = owner.first_name
     elsif owner.last_name
       name = owner.last_name
     else
