@@ -6,7 +6,7 @@ module ListingsHelper
   def get_listing
     listing = Listing.find(params[:id])
   end
-
+  # for listings#show
   def get_upload_listing_urls(listing)
     uploads = listing.upload_listings
     if uploads.length > 0
@@ -17,6 +17,16 @@ module ListingsHelper
       return urls # Array of UploadListings
     else
       return ["/uploads/upload_listing/alteriantive/alt_house.png"]
+    end
+  end
+
+  # for listings#edit
+  def get_uploaded_listings(listing)
+    uploads = listing.upload_listings
+    if uploads.length > 0
+      return uploads # Array of UploadListings
+    else
+      return ["no image"]
     end
   end
   # end of helper

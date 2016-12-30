@@ -7,4 +7,13 @@
   <%= form.file_field :image %>
   <p> </p>
   <%= form.submit "Save Changes" %>
+  <p> </p>
+<% end %>
+<% get_uploaded_listings(@listing).each do |image| %>
+  <% next if image == "no image" %>
+  <%= image_tag  image.image.url, :class => "avatar_img" %>
+  <% @image_object = image %>
+  <%= form_for @image_object, url: "/#{"upload"}_listings/#{image.id}", method: :delete do |form| %>
+  <%= form.submit "delete" %>
+  <% end %>
 <% end %>
