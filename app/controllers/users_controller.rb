@@ -15,7 +15,7 @@ class UsersController < Clearance::UsersController
     @user.role = 0
       # roles:
       # 0 = customer; 1 = moderator; 2 = superadmin
-      
+
       # actions can respond differently
       # to various request formats being sent
     respond_to do |format|
@@ -35,14 +35,34 @@ class UsersController < Clearance::UsersController
       end
     end
     # end of create
-end
+  end
+
+  def edit
+    render '/users/edit'
+  end
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    @user.avatar = params[:user][:avatar]
+    if @user.save
+      flash[:notice] = "Changes successfully saved!"
+    else
+      flash[:notice] = "Changes could not be saved!"
+    end
+    render '/users/show'
+  end
 private
   # Overriding method from Clearance gem in order to
   # create user with more attrbutes
   # than just email and password
-  def user_from_params
-    params.require(:user).permit(:first_name, :last_name, :gender, :email, :password)
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :gender,
+     :email, :password, :avatar)
   end
 
+  def change_attributes!(attr, strong_params, user)
+    attribute = attr[0].to_sym
+    user[attribute] = strong_params[attribute]  unless strong_params[attribute] == ""
+  end
   #  end of controller
 end

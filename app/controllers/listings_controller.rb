@@ -26,16 +26,10 @@ class ListingsController < ApplicationController
 
   def update
     @listing = Listing.find(params[:id])
-    strong_params = listing_params
-
-    @listing.title            = strong_params[:title]  unless strong_params[:title] == ""
-    @listing.description      = strong_params[:description] unless strong_params[:description] == ""
-    @listing.country          = strong_params[:country] unless strong_params[:country] == ""
-    @listing.city             = strong_params[:city] unless strong_params[:city] == ""
-    @listing.zip_code         = strong_params[:zip_code] unless strong_params[:zip_code] == ""
-    @listing.street_address   = strong_params[:street_address] unless strong_params[:street_address] == ""
-    @listing.price_per_night  = strong_params[:price_per_night] unless strong_params[:price_per_night] == ""
-    @listing.fees             = strong_params[:fees] unless strong_params[:fees] == ""
+     @listing.update(listing_params)
+      # this wont work with multiple true!
+      # saving the image
+    image = @listing.upload_listings.create(image: params[:listing][:image]) if  params[:listing][:image] # not nil
     if @listing.save
       redirect_to "/listings/#{@listing.id}"
     else
@@ -65,5 +59,6 @@ class ListingsController < ApplicationController
     params.require(:listing).permit(:title, :description, :country, :city,
     :zip_code, :street_address, :price_per_night, :fees)
   end
+
   # end of class
 end
