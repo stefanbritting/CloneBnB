@@ -13,5 +13,6 @@
 <% if @listing.user_id == current_user.id %>
   <%= link_to 'Edit Listing', controller: 'listings', action: "edit" %>
 <% end %>
+<%= link_to "Book this palce", new_listing_reservation_path(@listing) %>
 <p>This property is provided by: </p>
 <a  href="/users/<%=get_listing_owner.id%>"><%= get_owner_name %></a>

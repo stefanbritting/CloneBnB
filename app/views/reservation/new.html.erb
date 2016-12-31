@@ -1,0 +1,6 @@
+<% @listing = get_listing %>
+<h1>Reservation for: <%=@listing.title%> </h1>
+<% get_upload_listing_urls(@listing).each do |url| %>
+  <%= image_tag  url, :class => "avatar_img" %>
+<% end %>
+<%= render partial: "/listings/show_listing" %>
