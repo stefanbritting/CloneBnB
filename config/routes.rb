@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
     # User routes
   get "/users/:id" => "users#show"
-
+  get "/users/:id/reservations" => "users#reservations"
     # Further Listing routes
   post "listings/:id/verify" => "listings#verify"
     # Facebook Omniauth routes

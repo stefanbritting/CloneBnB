@@ -1,0 +1,9 @@
+<% @user = current_user %>
+<h1>Hello <%=@user.first_name %></h1>
+<h2>Here are your reservations:</h2>
+<% @user.reservations.each do |reservation| %>
+  <p><%= reservation.listing.title %></p>
+  <p> From: <%= reservation.from %></p>
+  <p>To: <%= reservation.to %></p>
+  <p>------------------------------------</p>
+<% end %>
