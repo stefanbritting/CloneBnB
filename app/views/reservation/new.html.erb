@@ -4,6 +4,12 @@
   <%= image_tag  url, :class => "avatar_img" %>
 <% end %>
 <%= render partial: "/listings/show_listing" %>
+<%= form_for :reservation, url: listing_reservation_index_path do |f| %>
+  <p>_____Check for reservation______</p>
+  <p>From: <%=f.date_field(:from) %></p>
+  <p>To: <%=f.date_field(:to) %></p>
+  <%= f.submit "Check for reservation" %>
+<% end %>
 <div class="container">
     <div class="row">
         <div class='col-sm-6'>
