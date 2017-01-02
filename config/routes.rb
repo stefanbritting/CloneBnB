@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get "/users/:id/reservations" => "users#reservations"
     # Further Listing routes
   post "listings/:id/verify" => "listings#verify"
+  get "/listings/:id/reservations" => "listings#reservations"
+  get "/listings/find/place" => "listings#find", as: "find_listing"
     # Facebook Omniauth routes
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
     # delete upload_listing (which is image of a listing)

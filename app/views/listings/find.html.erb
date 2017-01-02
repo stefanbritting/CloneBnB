@@ -1,0 +1,11 @@
+<h1>Find your Place to stay here</h1>
+<p> Please select a city: </p>
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select City
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <% get_cities.each do |city| %>
+      <li><a href="#"><%= city %></a></li>
+    <% end %>
+  </ul>
+</div>

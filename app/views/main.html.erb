@@ -1,4 +1,7 @@
-<h1>Hello CloneBnB </h1>
+<h1>CloneBnB</h1>
+<h2>Trable like a free spirit - Live like a local</h2>
+<%= link_to "Find a place to stay", find_listing_path%>
+<p> </p>
 <%= link_to "Create Listing", controller: 'listings', action: 'new' %> <br></br>
 <%= paginate @listing %><br></br>
 <% @listing.each do |property| %>

@@ -1,0 +1,9 @@
+<% @listing = get_listing2 %>
+<h1>Reservations for <%=@listing.title %></h1>
+<h2>-----------------------------------------------</h2>
+<% @listing.reservations.each do |reservation| %>
+  <p>Guest:<%= reservation.user.first_name + " " + reservation.user.last_name %></p>
+  <p> From: <%= reservation.from %></p>
+  <p>To: <%= reservation.to %></p>
+  <p>------------------------------------</p>
+<% end %>

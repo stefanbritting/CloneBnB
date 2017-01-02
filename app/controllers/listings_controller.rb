@@ -52,6 +52,14 @@ class ListingsController < ApplicationController
     flash[:notice] = flash_message
     redirect_to "/listings/#{params[:id]}"
   end
+
+  def reservations
+    render '/listings/reservations'
+  end
+
+  def find
+    render '/listings/find'
+  end
 ################################################
     private
 
