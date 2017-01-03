@@ -32,7 +32,8 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
     # delete upload_listing (which is image of a listing)
   delete "/upload_listings/:id" => "upload_listings#destroy"
-
+    # Braintree routes
+    post 'braintree/checkout'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
