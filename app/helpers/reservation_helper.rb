@@ -17,5 +17,14 @@ module ReservationHelper
     total = reservation.listing.fees + (duration * reservation.listing.price_per_night)
     total.to_f
   end
+
+  def payed?(reservation)
+    sum = 0
+    reservation.payments.each do |p|
+      sum = sum + p.amount
+    end
+    return true if sum >= reservation.get_total_price
+    false
+  end
   # end of Module
 end

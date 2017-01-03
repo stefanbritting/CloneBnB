@@ -1,3 +1,9 @@
+<!-- Load the Client component. -->
+<script src="https://js.braintreegateway.com/web/3.6.3/js/client.min.js"></script>
+
+<!-- Load the Hosted Fields component. -->
+<script src="https://js.braintreegateway.com/web/3.6.3/js/hosted-fields.min.js"></script>
+
 <h1>Please key in your payment details for the following Reservation</h1>
 <% @reservation = get_reservation_braintree %>
 <p><%= @reservation.listing.title %></p>
@@ -27,11 +33,6 @@
   </div>
   <% end %>
 </div>
-<!-- Load the Client component. -->
-<script src="https://js.braintreegateway.com/web/3.6.3/js/client.min.js"></script>
-
-<!-- Load the Hosted Fields component. -->
-<script src="https://js.braintreegateway.com/web/3.6.3/js/hosted-fields.min.js"></script>
 
 <script type="text/javascript">
 

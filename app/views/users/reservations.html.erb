@@ -5,6 +5,10 @@
   <p><%= reservation.listing.title %></p>
   <p> From: <%= reservation.from %></p>
   <p>To: <%= reservation.to %></p>
-  <%= link_to "Make payment", braintree_new_path(:braintree => {:reservation_id => reservation.id}) %>
+  <%if not(payed?(reservation)) %>
+    <%= link_to "Make payment", braintree_new_path(:braintree => {:reservation_id => reservation.id}) %>
+  <% else %>
+    <p>PAID</p>
+  <%end %>
   <p>------------------------------------</p>
 <% end %>
