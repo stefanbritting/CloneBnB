@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'braintree/new'
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
     # remove the controller in order to point to the UserController
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
 
     # User routes
   get "/users/:id" => "users#show"
-  get "/users/:id/reservations" => "users#reservations"
+  get "/users/:id/reservations" => "users#reservations", as: "user_reservations"
     # Further Listing routes
   post "listings/:id/verify" => "listings#verify"
   get "/listings/:id/reservations" => "listings#reservations"
@@ -30,7 +32,8 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
     # delete upload_listing (which is image of a listing)
   delete "/upload_listings/:id" => "upload_listings#destroy"
-
+    # Braintree routes
+    post 'braintree/checkout'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

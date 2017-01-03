@@ -1,7 +1,8 @@
 class Reservation < ActiveRecord::Base
   belongs_to :user
   belongs_to :listing
-
+  has_many :payments
+  
   def check_availability
     listing = Listing.find(self.listing_id)
     all_reservations = listing.reservations
@@ -17,7 +18,11 @@ class Reservation < ActiveRecord::Base
     end
     return not(bookings_overlapp?(carlendar, reservation_dates))
   end
-
+  def get_total_price
+    duration = self.to - self.from
+    total = self.listing.fees + (duration * self.listing.price_per_night)
+    total.to_f
+  end
     private
       # returns true if overlapping
   def bookings_overlapp?(carlendar, dates) # dates[0]=from; dates[1]=to
