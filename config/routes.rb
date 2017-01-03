@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
     # User routes
   get "/users/:id" => "users#show"
-  get "/users/:id/reservations" => "users#reservations"
+  get "/users/:id/reservations" => "users#reservations", as: "user_reservations"
     # Further Listing routes
   post "listings/:id/verify" => "listings#verify"
   get "/listings/:id/reservations" => "listings#reservations"
