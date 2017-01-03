@@ -15,6 +15,14 @@ class BraintreeController < ApplicationController
       )
     if result.success?
       redirect_to :root, :flash => {:success => "Transaction successful!"}
+      payment = Payment.new(reservation_id: @reservation.id)
+      payment.amount                    = result.transaction.amount
+      payment.executed_at               = result.transaction.created_at
+      payment.braintree_transaction_id  = result.transaction.id
+      payment.executed_at               = result.transaction.created_at
+      payment.braintree_customer_id     = result.transaction.customer_details.id
+      payment.save
+      byebug
     else
       message = "Transaction failed. Please try again."
       redirect_to :root, :flash => {:error => message}
