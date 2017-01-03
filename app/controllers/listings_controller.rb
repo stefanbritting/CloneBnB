@@ -60,6 +60,10 @@ class ListingsController < ApplicationController
   def find
     render '/listings/find'
   end
+
+  def find_in
+    render '/listings/city'
+  end
 ################################################
     private
 

@@ -5,7 +5,7 @@
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
     <% get_cities.each do |city| %>
-      <li><a href="#"><%= city %></a></li>
+      <li><a href="/listings/find/<%=city%>"><%= city %></a></li>
     <% end %>
   </ul>
 </div>
