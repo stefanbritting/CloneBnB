@@ -1,7 +1,8 @@
 class Reservation < ActiveRecord::Base
   belongs_to :user
   belongs_to :listing
-
+  has_many :payments
+  
   def check_availability
     listing = Listing.find(self.listing_id)
     all_reservations = listing.reservations
