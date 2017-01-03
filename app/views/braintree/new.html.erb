@@ -1,0 +1,11 @@
+<h1>Please key in your payment details for the following Reservation</h1>
+<% @reservation = get_reservation_braintree %>
+<p><%= @reservation.listing.title %></p>
+<p> From: <%= @reservation.from %></p>
+<p>To: <%= @reservation.to %></p>
+<p>______________________________</p>
+<p>+ Price per night: <%= @reservation.listing.price_per_night %></p>
+<p>+ Fees: <%= @reservation.listing.fees%></p>
+<p>-----------------------------</p>
+<p>Total: <%=get_total_price%> </p>
+<p>For <%=" " + (@reservation.to - @reservation.from).to_i.to_s %> night(s) </p>
