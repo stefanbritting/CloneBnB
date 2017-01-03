@@ -3,6 +3,20 @@ module ListingsHelper
     listings_array = Listing.all
   end
 
+  def get_cities
+    listing = Listing.all
+    cities = []
+    listing.each do |listing|
+      cities << listing.city unless cities.include?(listing.city)
+    end
+    return cities
+  end
+
+  def get_listings_in
+    listings = Listing.where(city: params[:city])
+    listings
+  end
+
   def get_listing
     listing = Listing.find(params[:id])
   end

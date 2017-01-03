@@ -1,0 +1,5 @@
+<% @listings = get_listings_in %>
+<h1>Select a Place to stay in <%=params[:city] %></h1>
+<% @listings.each do |listing| %>
+  <%=link_to "#{listing.title}", listing_path(listing) %>
+<%end %>

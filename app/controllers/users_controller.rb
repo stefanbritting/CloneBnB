@@ -51,6 +51,10 @@ class UsersController < Clearance::UsersController
     end
     render '/users/show'
   end
+
+  def reservations
+    render '/users/reservations'
+  end
 private
   # Overriding method from Clearance gem in order to
   # create user with more attrbutes
