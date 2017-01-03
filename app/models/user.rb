@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :authentications, :dependent => :destroy
   has_many :listings, :dependent => :destroy
+  has_many :reservations, :dependent => :destroy
     # the role coloumn is integer but their value will be concerted
     # the the role: [:symbols] according to their position (0,1,2)
     # the ActiveREcord::Enum model further adds nice methods
