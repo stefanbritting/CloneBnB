@@ -1,9 +1,9 @@
 class ReservationMailer < ApplicationMailer
-  default from: 'notifications@example.com' # from this account all emails will be sent
-  def new_booking_email(customer, host, reservation_id)
+  default from: 'thats1.how2.you3@gmail.com' # from this account all emails will be sent
+  def new_booking_email(customer, host, reservation)
     @customer = customer
     @host = host
-    @reservation_id = reservation_id
-    mail(to: host.email, subject: 'New Reservation for you Property')
+    @url = "/listings/#{reservation.listing.id}/reservations"
+    mail(to: host.email, subject: 'New Reservation for your Property')
   end
 end

@@ -9,6 +9,7 @@ class ReservationController < ApplicationController
     if reservation.check_availability
       if reservation.save
         flash[:notice] = "Reservation successful"
+        ReservationMailer.new_booking_email(User.find(reservation.user_id), User.find(reservation.listing.user_id), reservation).deliver_now
         redirect_to "/listings/#{params[:listing_id]}"
       else
         flash[:notice] = "Reservation could not be save! Please checkout your date format!"
