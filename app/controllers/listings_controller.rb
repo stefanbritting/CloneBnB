@@ -64,8 +64,23 @@ class ListingsController < ApplicationController
   def find_in
     render '/listings/city'
   end
+
+  def find_journey
+    @listings = Listing.search_by_city(params[:destinations][:city])
+    price_from = price_limits(params[:destinations][:price_from]).to_i # "".to_i => 0
+    price_to = price_limits(params[:destinations][:price_to])
+    price_to = 10**8 if price_to == "" || price_to == 0
+    # condition ? if_true : if_false
+    @listings = @listings.price_range(price_from, price_to)
+    render '/destinations'
+  end
 ################################################
     private
+
+  def price_limits(price)
+    return 0 if price == ""
+    price
+  end
 
   def listing_params
     params.require(:listing).permit(:title, :description, :country, :city,

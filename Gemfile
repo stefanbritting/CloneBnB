@@ -51,6 +51,8 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 gem 'braintree'
 # Sidekiq for asynchronous processing (emial)
 gem 'sidekiq'
+# PG_Search for full-text-search
+gem 'pg_search'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
