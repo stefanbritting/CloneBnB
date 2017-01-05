@@ -53,6 +53,8 @@ gem 'braintree'
 gem 'sidekiq'
 # PG_Search for full-text-search
 gem 'pg_search'
+# Skylight for server performance monitoring
+gem "skylight"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
