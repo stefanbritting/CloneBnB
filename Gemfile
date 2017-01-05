@@ -53,9 +53,6 @@ gem 'braintree'
 gem 'sidekiq'
 # PG_Search for full-text-search
 gem 'pg_search'
-# for better running on Heroku
-gem 'rails_12factor'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
