@@ -4,6 +4,22 @@
 <p> </p>
 <%= link_to "Create Listing", controller: 'listings', action: 'new' %> <br></br>
 <%= paginate @listing %><br></br>
+<div class="container">
+  <h2>Find your journey</h2>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= form_for :destinations, url: find_journey_path do |f| %>
+      <%= f.label :city, 'City' %>
+      <%= f.text_field :city %>
+      <%= f.label :price_from, 'Price from' %>
+      <%= f.text_field :price_from %>
+      <%= f.label :price_to, 'To' %>
+      <%= f.text_field :price_to %>
+      <%= f.submit "Search" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 <% @listing.each do |property| %>
   <a href="listings/<%= property.id%>"> <%= property.title%> </a><br></br>
 <% end %>

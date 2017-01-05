@@ -1,0 +1,19 @@
+<h1>We found the following destinations for you</h1>
+<p>-------------------------------------------------------</p>
+<div class="container">
+  <h2>Further Filters</h2>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= form_for :destinations, url: find_journey_path(@listings) do |f| %>
+      <%= f.label :description, 'Search Description(full-text-search)' %>
+      <%= f.text_field :description %>
+      <%= f.submit "Search" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<p>-------------------------------------------------------</p>
+
+<% @listings.each do |property| %>
+  <a href="listings/<%= property.id%>"> <%= property.title%> </a><br></br>
+<% end %>
