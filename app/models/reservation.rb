@@ -31,7 +31,6 @@ class Reservation < ActiveRecord::Base
         # on arrival/depature date another reservation can end/start
         # different checkin and checkout times
       booked_range = (c[0] + 1)..(c[1]-1)
-      byebug
       return true if booked_range === dates[0] || booked_range === dates[1] || (dates[0]..dates[1]) === booked_range
     end
     return false
