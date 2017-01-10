@@ -8,6 +8,7 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
     @listing.verification = false
+      # ***throws error online if price_per_night is not provided***
     if @listing.save
       redirect_to "/listings/#{@listing.id}"
     else

@@ -11,7 +11,7 @@ class UsersController < Clearance::UsersController
   end
     # controller for post "/users" request
   def create
-    @user = User.new(user_from_params)
+    @user = User.new(user_params)
     @user.role = 0
       # roles:
       # 0 = customer; 1 = moderator; 2 = superadmin

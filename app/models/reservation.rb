@@ -8,10 +8,10 @@ class Reservation < ActiveRecord::Base
     all_reservations = listing.reservations
     reservation_dates = [self.from, self.to]
     carlendar = []
-    temp_reservation_dates = []
       # Collection of reservations.
       # will be skipped if collection is empty
     all_reservations.each do |r|
+      temp_reservation_dates = []
       temp_reservation_dates << r.from
       temp_reservation_dates << r.to
       carlendar << temp_reservation_dates
@@ -31,7 +31,7 @@ class Reservation < ActiveRecord::Base
         # on arrival/depature date another reservation can end/start
         # different checkin and checkout times
       booked_range = (c[0] + 1)..(c[1]-1)
-      return true if booked_range === dates[0] || booked_range === dates[1]
+      return true if booked_range === dates[0] || booked_range === dates[1] || (dates[0]..dates[1]) === booked_range
     end
     return false
   end
