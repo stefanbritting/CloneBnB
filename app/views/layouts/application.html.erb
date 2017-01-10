@@ -20,6 +20,7 @@
     <% if signed_in? -%>
       <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
       <%= link_to "My Profile", "/users/#{current_user.id}" %>
+      <%= link_to "Create Listing", controller: 'listings', action: 'new' %> <br></br>
     <% else -%>
       <%= link_to t(".sign_in"), sign_in_path %> <br> </br>
       <%= link_to "Sign in with Facebook", "/auth/facebook" %>
