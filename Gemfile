@@ -42,7 +42,7 @@ gem 'omniauth-facebook'
 # pagination
 gem 'kaminari'
 # Adding CarrierWave for image uploads
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'fog'
 # Adding Bootstrap datetimepicker
 gem 'momentjs-rails', '>= 2.9.0'
