@@ -258,7 +258,7 @@ GEM
       activesupport (>= 4.2)
       arel (>= 6)
     puma (2.15.3)
-    rack (1.6.5)
+    rack (1.6.13)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
